@@ -18,7 +18,6 @@ angular.module('myApp', [
   .component('addPage', JobOfferAddComponent)
   .service('JobsService', JobsService)
   .service('DataStorageService', DataStorageService)
-  .service('FromValidationService', FromValidationService)
   .config(($stateProvider) => {
     'ngInject';
 
