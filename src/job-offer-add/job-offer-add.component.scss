@@ -1,0 +1,38 @@
+@import '_variables';
+
+.jobs--add {
+  padding: 0 10px;
+
+  input {
+    border: none;
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-input;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+  label {
+    font-size: 16px;
+    line-height: 1;
+    color: $color-input;
+  }
+
+  .label--field {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .button--add {
+    margin-left: 0px;
+  }
+}
+
+.jobs--message {
+  text-align: center;
+}

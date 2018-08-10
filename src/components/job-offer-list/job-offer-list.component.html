@@ -1,0 +1,20 @@
+<section
+    class="jobs"
+    ng-if="$ctrl.jobsList.length > 0">
+    <article class="job" ng-repeat="(key, value) in $ctrl.jobsList track by $index">
+        <h2 class="job--title">{{ ::value.title }}</h2>
+        <div class="job--info">
+            <small class="job--company">{{ ::value.company }}</small>
+            <small class="job--city">{{ ::value.city }},</small>
+            <small class="job--street">{{ ::value.street }}</small>
+        </div>
+        <blockquote class="job--quote">
+            {{ ::value.salaryMin | currency: 'PLN ' }} - {{ ::value.salaryMax | currency: 'PLN ' }}
+        </blockquote>
+    </article>
+</section>
+<section
+        class="jobs"
+        ng-if="$ctrl.jobsList.length === 0">
+    <h2 class="job--empty">No jobs offers</h2>
+</section>

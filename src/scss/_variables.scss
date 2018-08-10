@@ -1,0 +1,32 @@
+//Main modules definitions
+$white: #fff;
+$black: #000;
+$grey-1: #f5f5f5;
+$grey-2: #999;
+$grey-3: #ccc;
+$grey-4: #777;
+$red-1: #c91218;
+
+$color-btn: $grey-1;
+$color-btn-text: $black;
+$color-btn-hover: darken($grey-1, 20%);
+
+$color-error-text: $red-1;
+
+$color-job-company: $grey-2;
+$color-job-title: $grey-1;
+$color-job-border: $grey-3;
+
+$color-input: $grey-4;
+
+$breakpoints: (
+        'desktop':  ( min-width:  769px )
+) !default;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+}

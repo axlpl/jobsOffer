@@ -1,0 +1,151 @@
+<section class="jobs--add" ng-if="!$ctrl.isAdded">
+    <h3>Add job offer</h3>
+    <form name="form"
+          ng-submit="$ctrl.save(form.$valid)"
+          novalidate>
+        <div class="field">
+            <label>
+                <input type="text"
+                       name="title"
+                       ng-model="$ctrl.model.title"
+                       ng-minlength="5"
+                       ng-maxlength="40"
+                       placeholder="Job title"
+                       required />
+            </label>
+            <div ng-messages="form.title.$error"
+                 ng-if="$ctrl.hasError('title', form, $ctrl.hasClickedOnSubmit)"
+                 class="error"
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message-default>This field has an input error</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>
+                <input type="text"
+                       name="company"
+                       ng-model="$ctrl.model.company"
+                       ng-minlength="2"
+                       ng-maxlength="40"
+                       placeholder="Company name"
+                       required />
+            </label>
+            <div ng-messages="form.company.$error"
+                 ng-if="$ctrl.hasError('company', form, $ctrl.hasClickedOnSubmit)"
+                 class="error"
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message-default>This field has an input error</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>
+                <input type="text"
+                       name="street"
+                       ng-model="$ctrl.model.street"
+                       ng-minlength="3"
+                       ng-maxlength="40"
+                       placeholder="Street"
+                       required />
+            </label>
+            <div ng-messages="form.street.$error"
+                 ng-if="$ctrl.hasError('street', form, $ctrl.hasClickedOnSubmit)"
+                 class="error"
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message-default>This field has an input error</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>
+                <input type="text"
+                       name="city"
+                       ng-model="$ctrl.model.city"
+                       ng-minlength="2"
+                       ng-maxlength="40"
+                       placeholder="City"
+                       required />
+            </label>
+            <div ng-messages="form.city.$error"
+                 ng-if="$ctrl.hasError('city', form, $ctrl.hasClickedOnSubmit)"
+                 class="error"
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="minlength">Your field is too short</div>
+                <div ng-message="maxlength">Your field is too long</div>
+                <div ng-message-default>This field has an input error</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>
+                <input type="text"
+                       name="postalCode"
+                       ng-model="$ctrl.model.postalCode"
+                       ng-pattern="/^[0-9]{2}-[0-9]{3}$/"
+                       placeholder="Zip Code ie. 67-200"
+                       required />
+            </label>
+            <div ng-messages="form.postalCode.$error"
+                 ng-if="$ctrl.hasError('postalCode', form, $ctrl.hasClickedOnSubmit)"
+                 class="error"
+                 role="alert">
+                <div ng-message="required">You did not enter a field</div>
+                <div ng-message="pattern">This field should be i.e.: 67-200</div>
+                <div ng-message-default>This field has an input error</div>
+            </div>
+        </div>
+        <div class="field">
+            <h3>Select salary</h3>
+        </div>
+        <div class="field">
+            <label>
+                Minimum:
+                {{ $ctrl.model.salaryMin | currency: 'PLN ' }}
+                <input type="range"
+                       name="salaryMin"
+                       step="100"
+                       value="0"
+                       min="0" max="100000"
+                       ng-model="$ctrl.model.salaryMin"
+                       required />
+            </label>
+            <div ng-if="$ctrl.model.salaryMin == 0 && $ctrl.hasClickedOnSubmit"
+                 class="error"
+                 role="alert">
+                Salary should be more then 0 PLN</div>
+            </div>
+        </div>
+        <div class="field">
+            <label>
+                Maximum:
+                {{ $ctrl.model.salaryMax | currency: 'PLN ' }}
+                <input type="range"
+                       name="salaryMax"
+                       step="100"
+                       value="$ctrl.model.salaryMin"
+                       ng-disabled="$ctrl.model.salaryMin == 0"
+                       min="{{ $ctrl.model.salaryMin }}" max="{{ $ctrl.model.salaryMin * 2 }}"
+                       ng-model="$ctrl.model.salaryMax"
+                       required />
+            </label>
+        </div>
+
+        <div class="control">
+            <button
+                    ng-disabled="$ctrl.isSaving"
+                    class="button button--add">
+                Add offer
+            </button>
+        </div>
+    </form>
+</section>
+<section class="jobs--message" ng-if="$ctrl.isAdded">
+    <h3>Job offer was added! <a href="/">Go Main Page</a></h3>
+</section>
